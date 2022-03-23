@@ -6,7 +6,7 @@ class NumericalCSVFile():
  
     # Definisco il metodo che restituisca il CSV come lista di lista
     def get_data(self):
-        # Creo la lsita dati vuota
+        # Creo la lista dati vuota
         lista_dati=[]
         # Provo ad aprire il file, altrimenti genero un errore
         try:    
@@ -15,7 +15,7 @@ class NumericalCSVFile():
             for i,line in enumerate(my_file):
                 linee_elem=line.split(',')
                 linee_elem[-1]=linee_elem[-1].strip()
-                # Provo a convertire i numeri della seconda colonna a float, e poi carico nella lista da restituire a print
+                # Provo a convertire i numeri della seconda colonna a float, e poi carico nella lista da restituire
                 try:
                     linee_elem[1]=float(linee_elem[1])
                     if linee_elem[0] != 'Date':
