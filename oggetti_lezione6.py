@@ -9,6 +9,7 @@ class CSVFile():
 
     # Definisco il metodo che restituisca il CSV come lista di lista
     def get_data(self, start=None, end=None):
+
         lista_dati=[]
         my_file=open(self.name, 'r')
         for i,line in enumerate(my_file):
