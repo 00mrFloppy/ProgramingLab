@@ -13,21 +13,23 @@ class IncrementModel(Model):
         differenze_valore=[]
         # itero sui valori della lista, se è il primo valore lo salto e lui diventa l'ultimo valore
         # una volta che il primo valore diventa il secondo posso fare l edifferenze e inserirle in una lista mediate (diviso due essendo l'incremento di mese in mese) 
-        for item in data:
-            if prev_value is None:
-               prev_value=item
-            else:
-               valore = (item-prev_value)/2
-               prev_value=item
-               differenze_valore.append(valore)
-        # sommo la sigola liste delle differenze mediate e lo sommo all'ultimo valore della lista      
-        prediction =(sum(differenze_valore))+item
-        return prediction
-
+        if len(data) > 1:
+            for item in data:
+                if prev_value is None:
+                   prev_value=item
+                else:
+                   valore = (item-prev_value)/2
+                   prev_value=item
+                   differenze_valore.append(valore)
+            # sommo la sigola liste delle differenze mediate e lo sommo all'ultimo valore della lista      
+            prediction =(sum(differenze_valore))+item
+            return prediction
+        else:
+            raise Exception('Hai inserito solo un valore, non posso fare predizioni')
 #==============================
 #  Corpo del programma
 #==============================
-mia_lista = [0,2,10]
+mia_lista = [2,5,7]
 
 increment_model = IncrementModel()
 prediction_value = increment_model.predict(mia_lista)
